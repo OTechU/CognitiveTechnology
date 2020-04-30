@@ -1,0 +1,54 @@
+visualize image-type jpg
+visualize architectural-wmes on
+wm add I2 ^weather raining
+
+sp {propose*ItsRaining
+    (state <s> ^type state)
+    (<s> ^io <io>)
+    (<io> ^input-link <input>)
+    (<input> ^weather raining)
+-->
+    (<s> ^operator <o> + =)
+    (<o> ^name ItsRaining)
+}
+
+sp {propose*ItsSunny
+    (state <s> ^type state)
+    (<s> ^io <io>)
+    (<io> ^input-link <input>)
+    (<input> ^weather sunny)
+-->
+    (<s> ^operator <o> + =)
+    (<o> ^name ItsSunny)
+}
+ 
+sp {propose*ItsSnowing
+    (state <s> ^type state)
+    (<s> ^io <io>)
+    (<io> ^input-link <input>)
+    (<input> ^weather Snowing)
+-->
+    (<s> ^operator <o> + =)
+    (<o> ^name ItsSnowing)
+}
+
+sp {apply*ItsRaining
+    (state <s> ^operator <o>)
+    (<o> ^name ItsRaining)
+-->
+    (write |It's raining|)
+}
+
+sp {apply*ItsSunny
+    (state <s> ^operator <o>)
+    (<o> ^name ItsSunny)
+-->
+    (write |It's sunny|)
+}
+
+sp {apply*ItsSnowing
+    (state <s> ^operator <o>)
+    (<o> ^name ItsSnowing)
+-->
+    (write |It's snowing|)
+}

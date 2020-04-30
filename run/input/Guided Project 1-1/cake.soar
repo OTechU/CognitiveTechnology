@@ -1,0 +1,20 @@
+wm add I2 ^cake true
+visualize image-type jpg
+visualize architectural-wmes on
+
+sp {propose*BakeCake
+	(state <s> ^type state)
+	(<s> ^io <io>)
+	(<io> ^input-link <input>)
+	(<input> ^cake true)
+-->
+	(<s> ^operator <o> + =)
+	(<o> ^name bakeCake)
+}
+
+sp {apply*BakeCake
+	(state <s> ^operator <o>)
+	(<o> ^name bakeCake)
+-->
+	(write |Cake baked|)
+}
